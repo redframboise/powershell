@@ -7,11 +7,13 @@
                         "{0:n2}" -f ((gci -path $pth -recurse | measure-object -property length -sum).sum /1mb) + " Mb"
                         }
 
-    <# Modify #>    $servers = @('192.168.0.7','OrAnotherServer','etc')
+    <# Modify #>        $servers = @('192.168.0.7','OrAnotherServer','etc')
+    <# Interactive #>   #$srv = Read-Host "`r`nExample : '1.1.1.1','2.2.2.2' `r`n [Servers] : "; $servers = -join('(',$srv,')')
     
     <# Comment #> # "\\$server\$folder" is "\\192.168.0.7\C$\folder"
     
-    <# Modify #>    $folder = "C$\folder"
+    <# Modify #>        $folder = "C$\folder"
+    <# Interactive #>   #$folder = Read-Host "`r`n[Target] : " 
 
     <# DoNotModify #>       foreach ($server in $servers)
                                 {
