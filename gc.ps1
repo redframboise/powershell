@@ -13,7 +13,7 @@
     <# Comment #> # "\\$server\$folder" is "\\192.168.0.7\C$\folder"
     
     <# Modify #>        $folder = "C$\folder"
-    <# Interactive #>   #$folder = Read-Host "`r`n[Target] : " 
+    <# Interactive #>   #$folder = Read-Host "`r`nExample : C$\folder1 `r`n[Target] : "
 
     <# DoNotModify #>       foreach ($server in $servers)
                                 {
