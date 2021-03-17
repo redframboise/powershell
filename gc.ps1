@@ -9,7 +9,7 @@
 
     <# Modify #>    $servers = @('192.168.0.7','OrAnotherServer','etc')
     
-    <# Comment #> # $target = "\\$server\$folder"   
+    <# Comment #> # "\\$server\$folder" is "\\192.168.0.7\C$\folder"
     
     <# Modify #>    $folder = "C$\folder"
 
@@ -18,25 +18,26 @@
     
                                     $target = "\\$server\$folder"
 
-                                    #
+                                    <# Get target size #>
                                     $size = Get-All-Size $target -ErrorAction silentlycontinue
                                     Write-Host "`r`n                         > [$server] Target size is about $size." -foreground yellow
                                     Write-Host
                                     
-                                    #
+                                    <# Del target #>
                                     $target = "\\$server\$folder\*"
                                     Remove-Item $target -Recurse -Force -ErrorAction silentlycontinue
                                     Write-Host "`r`n                         > [$server] Target has been deleted." -foreground red
                                     
-                                    # 
+                                    <#  #>
                                     $AreYouStillThere = Test-Path -Path $target
                                     if (!($AreYouStillThere)) {
                                             Write-Host "`r`n                         > [$server] Success !"  -foreground green
                                     
                                     } else { 
                                     
-                                    Write-Host "`r`n                         > [$server] $target is not empty !"  -foreground yellow
-                                    Write-Host "Keep in mind that it could be a false negative result, because a process might be using a file.`r`n"
+                                    $size = Get-All-Size $target -ErrorAction silentlycontinue
+                                    Write-Host "`r`n                         > [$server] $target is not empty, size is about $size."  -foreground yellow
+                                    Write-Host "Keep in mind that it could be a false negative result because a process might be running.`r`n"
                                     
                                     }
 
