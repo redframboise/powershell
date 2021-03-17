@@ -8,7 +8,7 @@
                         }
 
     <# Modify #>        $servers = @('192.168.0.7','OrAnotherServer','etc')
-    <# Interactive #>   #$srv = Read-Host "`r`nExample : '1.1.1.1','2.2.2.2' `r`n [Servers] : "; $servers = -join('(',$srv,')')
+    <# Interactive #>   #$srv = Read-Host "`r`nExample : '1.1.1.1','2.2.2.2' `r`n[Servers] : "; $servers = -join('(',$srv,')')
     
     <# Comment #> # "\\$server\$folder" is "\\192.168.0.7\C$\folder"
     
